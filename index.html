@@ -47,7 +47,7 @@
 					<div id="stats">
 						<div class="lead mb-3 text-mono text-success">Stats:</div>
 						<p class="mt-1 text-grey text-spacey">
-              Players: <a class="loading" id="loading1"></a><a id="pCount"></a><button type="button" data-toggle="modal" data-target="#players" class="btn btn-outline-light btn-sm ml-2">Players</button>
+              Players: <a class="loading" id="loading1"></a><a id="pCount"></a><button type="button" data-toggle="modal" style="display:none;" id="players" data-target="#players" class="btn btn-outline-light btn-sm ml-2">Players</button>
 							<br>Version: <a class="loading" id="loading2"></a><a id="version"></a>
               <br>Lifetime: <a id="lifetime"></a>
 						</p>
@@ -109,8 +109,8 @@
 		            } else {
                   document.getElementById('loading1').style.display = "none";
                   document.getElementById('loading2').style.display = "none";
-                  document.getElementById("pCount").innerHTML = "N/A";
-                  document.getElementById("version").innerHTML = "N/A";
+                  document.getElementById("pCount").innerHTML = "Offline? Try refresh.";
+                  document.getElementById("version").innerHTML = "Offline? Try refresh.";
                 }
 		        });
 
