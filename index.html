@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>ar0n's Vanilla</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/bootstrap4-neon-glow.min.css">
+  <link rel="stylesheet" href="css/coolStuff.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/font-hack/2.020/css/hack.min.css">
+</head>
+
+<body>
+	<div class="jumbotron bg-transparent mb-0 radius-0 vertical-center">
+		<div class="container load" id="container">
+			<div class="row">
+				<div class="col-xl-6">
+					<h1 class="display-2">ar0n's Vanill<span class="vim-caret">a</span></h1>
+					<div class="lead mb-3 text-mono text-success">A small, friendly semi-vanilla server</div>
+					<div class="text-mono">
+						<button type="button" data-toggle="modal" data-target="#join" class="btn btn-success btn-shadow px-3 my-2 ml-0 text-left">Join</button> <a onclick="leave()" class="btn btn-danger btn-shadow px-3 my-2 ml-0 ml-sm-1 text-left">
+              Leave
+            </a>
+					</div>
+					<div class="text-darkgrey text-mono my-2">Tip: Click Join :)</div>
+					<br>
+					<div id="stats">
+						<div class="lead mb-3 text-mono text-success">Stats:</div>
+						<p class="mt-1 text-grey text-spacey">
+              Players: <a class="loading" id="loading1"></a><a id="pCount"></a><button id="players" style="display: none;" type="button" class="btn btn-outline-light btn-sm ml-2" data-toggle="tooltip" data-placement="right" title="xd">Hover</button>
+							<br>Version: <a class="loading" id="loading2"></a><a id="version"></a>
+              <br>Lifetime: <a id="lifetime"></a>
+						</p>
+					</div>
+          <div class="lead mb-3 text-mono text-success">Donate:</div>
+          <p class="mt-1 text-grey text-spacey">
+            Services provided are free. You can help support the server and me by donating! You also get a rank with some cool perks :)<br><br>Store: <a href="https://store.ar0n.ga">store.ar0n.ga</a>
+          </p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="join" tabindex="-1" role="dialog" aria-labelledby="join" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Address:
+															<code id="address">vanilla.ar0n.ga</code>
+															<button type="button" onclick="copyAdd()" id="copy" class="btn btn-outline-light btn-sm ml-2">Copy</button>
+														</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">	<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script>
+		//Get the status
+		        $.getJSON('https://api.mcsrvstat.us/2/vanilla.ar0n.ga', function(status) {
+		            if (status.online == true) {
+		                document.getElementById('loading1').style.display = "none";
+		                document.getElementById('loading2').style.display = "none";
+		                document.getElementById("pCount").innerHTML = status.players.online + "/" + status.players.max;
+		                document.getElementById("version").innerHTML = status.version + " (" + status.software + ")";
+                    var players = "";
+                    $.each(status.players.list, function(index, player){
+                  		players = players + player + " ";
+                  	});
+                    document.getElementById("players").setAttribute("data-original-title", players);
+                    document.getElementById('players').style.display = "";
+		            } else {
+                  document.getElementById('loading1').style.display = "none";
+                  document.getElementById('loading2').style.display = "none";
+                  document.getElementById("pCount").innerHTML = "N/A";
+                  document.getElementById("version").innerHTML = "N/A";
+                }
+		        });
+
+		        function copyAdd() {
+		            navigator.clipboard.writeText("vanilla.ar0n.ga").then(function() {
+		                document.getElementById('copy').classList.remove("btn-outline-light");
+		                document.getElementById('copy').classList.add("btn-outline-success");
+		                document.getElementById('copy').innerHTML = "Copied";
+		            }, function() {
+		                document.getElementById('copy').classList.remove("btn-outline-light");
+		                document.getElementById('copy').classList.add("btn-outline-danger");
+		                document.getElementById('copy').innerHTML = "Error: Manually copy.";
+		            });
+		        }
+
+		        function leave() {
+		            document.getElementById('container').classList.add("leave");
+		            var delayInMilliseconds = 1000;
+		            setTimeout(function() {
+		                close();
+		                window.close();
+		            }, delayInMilliseconds);
+		        }
+            var d = new Date();
+            d.setFullYear(2019, 03, 12);
+            const diffTime = Math.abs(Date.now() - d);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            document.getElementById('lifetime').innerHTML = diffDays + " days";
+            $(function () {
+              $('[data-toggle="tooltip"]').tooltip()
+            })
+	</script>
+</body>
+</html>
