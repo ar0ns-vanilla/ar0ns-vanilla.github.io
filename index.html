@@ -47,7 +47,7 @@
 					<div id="stats">
 						<div class="lead mb-3 text-mono text-success">Stats:</div>
 						<p class="mt-1 text-grey text-spacey">
-              Players: <a class="loading" id="loading1"></a><a id="pCount"></a><button type="button" data-toggle="modal" style="display:none;" id="players" data-target="#players" class="btn btn-outline-light btn-sm ml-2">Players</button>
+              Players: <a class="loading" id="loading1"></a><a id="pCount"></a><button type="button" style="display: none;" id="playersButton" data-toggle="modal" data-target="#players" class="btn btn-outline-light btn-sm ml-2">Players</button>
 							<br>Version: <a class="loading" id="loading2"></a><a id="version"></a>
               <br>Lifetime: <a id="lifetime"></a>
 						</p>
@@ -61,7 +61,7 @@
 		</div>
 	</div>
 
-	<div class="modal fade" id="join" tabindex="-1" role="dialog" aria-labelledby="join" aria-hidden="true">
+	<div class="modal fade" id="join" tabindex="-1" role="dialog">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -76,8 +76,8 @@
 		</div>
 	</div>
 
-	<div class="modal fade" id="players" tabindex="-1" role="dialog" aria-labelledby="players" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+	<div class="modal fade" id="players" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLongTitle">Players</h5>
@@ -90,7 +90,7 @@
 			</div>
 		</div>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	<script>
@@ -102,15 +102,15 @@
 		                document.getElementById("version").innerHTML = status.version + " (" + status.software + ")";
                     var players = "";
                     $.each(status.players.list, function(index, player){
-                  		players = players + '<div class="mb-2"><img src="https://minotar.net/helm/'+player+'/32.png" alt="ar0nMC" title="" data-original-title="ar0nMC" width="25" height="25">  ' + player + "</div>";
+                  		players = players + '<div class="mb-2"><img src="https://minotar.net/helm/'+player+'/32.png" alt="ar0nMC" title="" data-original-title="ar0nMC" width="25" height="25"> ' + player + "</div>";
                   	});
                     document.getElementById("pList").innerHTML = players;
-                    document.getElementById('players').style.display = "";
+                    document.getElementById('playersButton').style.display = "";
 		            } else {
                   document.getElementById('loading1').style.display = "none";
                   document.getElementById('loading2').style.display = "none";
-                  document.getElementById("pCount").innerHTML = "Offline? Try refresh.";
-                  document.getElementById("version").innerHTML = "Offline? Try refresh.";
+                  document.getElementById("pCount").innerHTML = "N/A";
+                  document.getElementById("version").innerHTML = "N/A";
                 }
 		        });
 
@@ -129,19 +129,12 @@
 		        function leave() {
 		            document.getElementById('container').classList.add("leave");
 		            var delayInMilliseconds = 1000;
-		            setTimeout(function() {
-		                close();
-		                window.close();
-		            }, delayInMilliseconds);
 		        }
             var d = new Date();
             d.setFullYear(2019, 03, 12);
             const diffTime = Math.abs(Date.now() - d);
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             document.getElementById('lifetime').innerHTML = diffDays + " days";
-            $(function () {
-              $('[data-toggle="tooltip"]').tooltip()
-            })
 	</script>
 </body>
 </html>
