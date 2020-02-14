@@ -29,6 +29,9 @@
   <link rel="stylesheet" href="css/coolStuff.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/font-hack/2.020/css/hack.min.css">
+
+	<script type="text/javascript" defer src="https://donorbox.org/install-popup-button.js"></script>
+<script>window.DonorBox = { widgetLinkClassName: 'custom-dbox-popup' }</script>
 </head>
 
 <body>
@@ -48,16 +51,15 @@
 					<br>
 					<div id="stats">
 						<div class="lead mb-3 text-mono text-success">Stats:</div>
-						<p class="text-danger font-weight-bold">SERVER IS CURRENTLY DOWN TILL SERVER PROVIDER MOVE IS DONE!!! (back soon)</p>
 						<p class="mt-1 text-grey text-spacey">
               Players: <a class="loading" id="loading1"></a><a id="pCount"></a><button type="button" style="display: none;" id="playersButton" data-toggle="modal" data-target="#players" class="btn btn-outline-light btn-sm ml-2">Players</button>
 							<br>Version: <a class="loading" id="loading2"></a><a id="version"></a>
               <br>Lifetime: <a id="lifetime"></a>
 						</p>
 					</div>
-          <div class="lead mb-3 text-mono text-success">Donate:</div>
+		<a type="button" href="https://donorbox.org/ar0n-s-vanilla" class="btn btn-warning btn-shadow px-3 my-2 ml-0 text-left custom-dbox-popup">Click Me To Donate!</a>
           <p class="mt-1 text-grey text-spacey">
-            Services provided are free. You can help support the server and me by donating! You also get a rank with some cool perks :)<br><br>Store: <a href="https://store.ar0n.com">store.ar0n.com</a>
+            Services provided are free, but the server I rent isn't (€45 a month) :(<br>You can help support the server by donating (click above) or buying a rank at the store, any amount will help!<br><br>Store: <a href="https://store.ar0n.com">store.ar0n.com</a>
           </p>
 				</div>
 			</div>
@@ -114,6 +116,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/popper.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
 	<script>
+
 		        $.getJSON('https://api.mcsrvstat.us/2/ar0n.com', function(status) {
 		            if (status.online == true) {
 		                document.getElementById('loading1').style.display = "none";
