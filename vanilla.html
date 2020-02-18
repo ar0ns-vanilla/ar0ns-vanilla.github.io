@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Primary Meta Tags -->
+<title>ar0n's Vanilla | Minecraft Server</title>
+<meta name="title" content="ar0n's Vanilla | Minecraft Server">
+<meta name="description" content="A small, friendly semi-vanilla server. Come check it out :)">
+<link rel="icon" href="https://cdn.cloudprotected.net/rPPmDHlLQ1/2ea378679b99c7404ea82530ae517768/kaqc3usc7ukfouay9gdmfylsq.png">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ar0n.com/">
+<meta property="og:title" content="ar0n's Vanilla | Minecraft Server">
+<meta property="og:description" content="A small, friendly semi-vanilla server. Come check it out :)">
+<meta property="og:image" content="https://i.imgur.com/gupmAZU.png">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://ar0n.com/">
+<meta property="twitter:title" content="ar0n's Vanilla | Minecraft Server">
+<meta property="twitter:description" content="A small, friendly semi-vanilla server. Come check it out :)">
+<meta property="twitter:image" content="https://i.imgur.com/gupmAZU.png">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/bootstrap4-neon-glow.min.css">
+  <link rel="stylesheet" href="css/coolStuff.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/font-hack/2.020/css/hack.min.css">
+
+	<script type="text/javascript" defer src="https://donorbox.org/install-popup-button.js"></script>
+<script>window.DonorBox = { widgetLinkClassName: 'custom-dbox-popup' }</script>
+<style>
+.youtube {
+	position: relative;
+  top: 45%;
+  transform: translateY(-50%);
+}
+
+</style>
+</head>
+
+<body>
+	<div class="jumbotron bg-transparent mb-0 radius-0 vertical-center">
+		<div class="container load" id="container">
+			<div class="row">
+				<div class="col-xl-6">
+					<h1 class="display-2">ar0n's Vanilla</h1>
+					<div class="lead mb-3 text-mono text-success">A friendly semi-vanilla server. Come check it out :)</div>
+					<div class="text-mono">
+						<button type="button" data-toggle="modal" data-target="#join" class="btn btn-success btn-shadow px-3 my-2 ml-0 text-left">Join</button> <a onclick="leave()" class="btn btn-danger btn-shadow px-3 my-2 ml-0 ml-sm-1 text-left">
+              Leave
+            </a>
+						<a href="https://map.ar0n.com/" target="_blank" class="btn btn-info btn-shadow px-3 my-2 ml-0 ml-sm-1 text-left" data-type="theme">DynMap</a>
+					</div>
+					<div class="text-darkgrey text-mono my-2">Tip: Click Join :)</div>
+					<br>
+					<div id="stats">
+						<div class="lead mb-3 text-mono text-success">Stats:</div>
+						<p class="mt-1 text-grey text-spacey">
+              Players: <a class="loading" id="loading1"></a><a id="pCount"></a><button type="button" style="display: none;" id="playersButton" data-toggle="modal" data-target="#players" class="btn btn-outline-light btn-sm ml-2">Players</button>
+							<br>Version: <a class="loading" id="loading2"></a><a id="version"></a>
+              <br>Lifetime: <a id="lifetime"></a>
+						</p>
+					</div>
+		<a type="button" href="https://donorbox.org/ar0n-s-vanilla" class="btn btn-warning btn-shadow px-3 my-2 ml-0 text-left custom-dbox-popup">Click Me To Donate!</a>
+          <p class="mt-1 text-grey text-spacey">
+            Services provided are free, but the server I rent isn't (€45 a month) :(<br>You can help support the server by donating (click above) or buying a rank at the store, any amount will help!<br><br>Store: <a href="https://store.ar0n.com">store.ar0n.com</a>
+          </p>
+				</div>
+				<div class="col-md-1 offset-md-1" >
+					<div class="youtube">
+						<iframe style="vertical-align: middle;" width="560" height="315" src="https://www.youtube.com/embed/3mSz9dW1348" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="join" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Address:
+															<code id="address">ar0n.com</code>
+															<button type="button" onclick="copyAdd()" id="copy" class="btn btn-outline-light btn-sm ml-2">Copy</button>
+														</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">	<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="players" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Players</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">	<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p id="pList"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--<div class="modal" tabindex="-1" role="dialog" id="trailer">
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title">Server Trailer</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+				<p align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/3mSz9dW1348" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+			</div>
+		  </div>
+		</div>
+	  </div>-->
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/popper.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+	<script>
+
+		        $.getJSON('https://api.mcsrvstat.us/2/ar0n.com', function(status) {
+		            if (status.online == true) {
+		                document.getElementById('loading1').style.display = "none";
+		                document.getElementById('loading2').style.display = "none";
+		                document.getElementById("pCount").innerHTML = status.players.online + "/" + status.players.max;
+		                document.getElementById("version").innerHTML = status.version + " (" + status.software + ")";
+                    var players = "";
+                    $.each(status.players.list, function(index, player){
+                  		players = players + '<div class="mb-2"><img src="https://minotar.net/helm/'+player+'/25.png" alt="ar0nMC" title="" data-original-title="ar0nMC" width="25" height="25"> ' + player + "</div>";
+                  	});
+                    document.getElementById("pList").innerHTML = players;
+                    document.getElementById('playersButton').style.display = "";
+		            } else {
+                  document.getElementById('loading1').style.display = "none";
+                  document.getElementById('loading2').style.display = "none";
+                  document.getElementById("pCount").innerHTML = "N/A";
+                  document.getElementById("version").innerHTML = "N/A";
+                }
+		        });
+
+		        function copyAdd() {
+		            navigator.clipboard.writeText("ar0n.com").then(function() {
+		                document.getElementById('copy').classList.remove("btn-outline-light");
+		                document.getElementById('copy').classList.add("btn-outline-success");
+		                document.getElementById('copy').innerHTML = "Copied";
+		            }, function() {
+		                document.getElementById('copy').classList.remove("btn-outline-light");
+		                document.getElementById('copy').classList.add("btn-outline-danger");
+		                document.getElementById('copy').innerHTML = "Error: Manually copy.";
+		            });
+		        }
+
+		        function leave() {
+		            var cont = document.getElementById('container');
+		            var delayInMilliseconds = 1000;
+					cont.addEventListener("animationend", function() {
+						document.location.href = "index.html"
+					});
+					cont.classList.add("leave");
+		        }
+            var d = new Date();
+            d.setFullYear(2019, 03, 12);
+            const diffTime = Math.abs(Date.now() - d);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            document.getElementById('lifetime').innerHTML = diffDays + " days";
+	</script>
+</body>
+</html>
