@@ -41,7 +41,7 @@
 }
  .leave {
      -webkit-animation-name: leave;
-     -webkit-animation-duration: 1.5s;
+     -webkit-animation-duration: 1s;
      -webkit-animation-iteration-count: 1;
      -webkit-animation-timing-function: ease;
      -webkit-animation-fill-mode: forwards;
