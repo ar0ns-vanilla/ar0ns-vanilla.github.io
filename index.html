@@ -50,13 +50,14 @@
 					<h1 class="display-2">ar0n's Servers</h1>
 					<div class="lead mb-3 text-mono text-success">Choose an option:</div>
 					<div class="text-mono">
-						<a href="vanilla.html" class="btn btn-success btn-shadow px-3 my-2 ml-0 ml-sm-1 text-left" data-type="theme">Semi-Vanilla</a>
+						<a href="vanilla.html" class="btn btn-success btn-shadow px-3 my-2 ml-0 ml-sm-1 text-left" data-type="theme">Vanilla</a>
 						<a href="direwolf20.html" class="btn btn-info btn-shadow px-3 my-2 ml-0 ml-sm-1 text-left" data-type="theme">Direwolf20</a>
 						<a href="https://discord.gg/k6YFyhf" target="_blank" class="btn btn-primary btn-shadow px-3 my-2 ml-0 ml-sm-1 text-left" data-type="theme">Discord</a>
+						<a href="hosting.html" class="btn btn-danger btn-shadow px-3 my-2 ml-0 ml-sm-1 text-left" data-type="theme">Affordable Hosting</a>
 						<a type="button" href="https://donorbox.org/ar0n-s-vanilla" class="btn btn-warning btn-shadow px-3 my-2 ml-0 ml-sm-1 text-left custom-dbox-popup">Donate</a>
 					</div>
 					<br>
-		
+
           <p class="mt-1 text-grey text-spacey">
             Services provided are free, but the server I rent isn't (€45 a month) :(<br>You can help support the server by donating (click above)
           </p>
@@ -115,39 +116,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/popper.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
 	<script>
-
-		        $.getJSON('https://api.mcsrvstat.us/2/ar0n.com', function(status) {
-		            if (status.online == true) {
-		                document.getElementById('loading1').style.display = "none";
-		                document.getElementById('loading2').style.display = "none";
-		                document.getElementById("pCount").innerHTML = status.players.online + "/" + status.players.max;
-		                document.getElementById("version").innerHTML = status.version + " (" + status.software + ")";
-                    var players = "";
-                    $.each(status.players.list, function(index, player){
-                  		players = players + '<div class="mb-2"><img src="https://minotar.net/helm/'+player+'/25.png" alt="ar0nMC" title="" data-original-title="ar0nMC" width="25" height="25"> ' + player + "</div>";
-                  	});
-                    document.getElementById("pList").innerHTML = players;
-                    document.getElementById('playersButton').style.display = "";
-		            } else {
-                  document.getElementById('loading1').style.display = "none";
-                  document.getElementById('loading2').style.display = "none";
-                  document.getElementById("pCount").innerHTML = "N/A";
-                  document.getElementById("version").innerHTML = "N/A";
-                }
-		        });
-
-		        function copyAdd() {
-		            navigator.clipboard.writeText("ar0n.com").then(function() {
-		                document.getElementById('copy').classList.remove("btn-outline-light");
-		                document.getElementById('copy').classList.add("btn-outline-success");
-		                document.getElementById('copy').innerHTML = "Copied";
-		            }, function() {
-		                document.getElementById('copy').classList.remove("btn-outline-light");
-		                document.getElementById('copy').classList.add("btn-outline-danger");
-		                document.getElementById('copy').innerHTML = "Error: Manually copy.";
-		            });
-		        }
-
 		        function leave() {
 		            document.getElementById('container').classList.add("leave");
 		            var delayInMilliseconds = 1000;
